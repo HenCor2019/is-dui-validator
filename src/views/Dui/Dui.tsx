@@ -3,13 +3,15 @@ import React, { useEffect, useState } from 'react';
 import { isValidDui } from '../../helpers';
 import { Input } from '../../components/Input';
 
-export function Dui() {
+export function Dui(): JSX.Element {
   const [value, setValue] = useState('');
   const [message, setMessage] = useState('');
   const [isValid, setIsValid] = useState(false);
 
   useEffect(() => {
     if (!value) {
+      setIsValid(false);
+      setMessage('');
       return;
     }
 
@@ -28,6 +30,12 @@ export function Dui() {
   };
 
   const onSubmit = (inputToValidate: string) => {
+    if (!inputToValidate) {
+      setIsValid(false);
+      setMessage('');
+      return;
+    }
+
     if (!isValidDui(inputToValidate)) {
       setIsValid(false);
       setMessage('Dui invalido');

@@ -39,7 +39,7 @@ describe('Input', () => {
         validateDuiInput={MOCK_SUBMIT}
       />,
     );
-    expect(getByText('Mi DUI es valido?')).toHaveTextContent('Mi DUI es valido?');
+    expect(getByText('¿Mi DUI es valido?')).toHaveTextContent('¿Mi DUI es valido?');
   });
 
   it('should have an input text', () => {
