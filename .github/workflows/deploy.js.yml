@@ -94,6 +94,7 @@ jobs:
         cache: 'npm'
         node-version: '16.10.0'
     - name: Install dependencies
+      if: ${{ github.event_name == 'push' }}
       run: npm ci
 
     - uses: actions/download-artifact@v3
