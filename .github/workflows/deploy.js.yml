@@ -1,4 +1,4 @@
-name: Deploy
+name: Deployment pipeline
 
 on:
   push:
@@ -89,6 +89,7 @@ jobs:
         fetch-depth: 0
 
     - uses: actions/setup-node@v3
+      if: ${{ github.event_name == 'push' }}
       with:
         cache: 'npm'
         node-version: '16.10.0'
@@ -96,6 +97,7 @@ jobs:
       run: npm ci
 
     - uses: actions/download-artifact@v3
+      if: ${{ github.event_name == 'push' }}
       with:
         name: dist
         path: dist
